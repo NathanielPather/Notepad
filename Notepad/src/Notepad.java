@@ -32,6 +32,12 @@ public class Notepad {
 		JTextArea textArea = new JTextArea();
 		frame.add(textArea);
 		
+		JScrollPane scrollPane = new JScrollPane(textArea);
+		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		frame.add(scrollPane, BorderLayout.CENTER);
+		
+		
 		frame.setVisible(true);
 	}
 }
