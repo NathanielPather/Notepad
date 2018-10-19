@@ -1,5 +1,8 @@
 import javax.swing.*;
+
 import java.awt.*;
+import java.awt.event.KeyEvent;
+
 import javax.swing.border.EmptyBorder;
 
 
@@ -18,6 +21,13 @@ public class Notepad {
 		JMenu formatMenu = new JMenu("Format");
 		JMenu viewMenu = new JMenu("View");
 		JMenu helpMenu = new JMenu("Help");
+		
+		// menu mnemonic keys
+		fileMenu.setMnemonic(KeyEvent.VK_F);
+		editMenu.setMnemonic(KeyEvent.VK_E);
+		formatMenu.setMnemonic(KeyEvent.VK_O);
+		viewMenu.setMnemonic(KeyEvent.VK_V);
+		helpMenu.setMnemonic(KeyEvent.VK_H);
 		
 		//add menu to bar, but not set yet.
 		menuBar.add(fileMenu);
@@ -39,21 +49,70 @@ public class Notepad {
 		JMenuItem cutMenuItem = new JMenuItem("Cut");
 		JMenuItem copyMenuItem = new JMenuItem("Copy");
 		JMenuItem pasteMenuItem = new JMenuItem("Paste");
-		JMenuItem deleteSetupMenuItem = new JMenuItem("Delete");
+		JMenuItem deleteMenuItem = new JMenuItem("Delete");
 		JMenuItem findMenuItem = new JMenuItem("Find...");
 		JMenuItem findNextMenuItem = new JMenuItem("Find Next");
 		JMenuItem replaceMenuItem = new JMenuItem("Replace...");
 		JMenuItem goToMenuItem = new JMenuItem("Go To...");
 		JMenuItem selectAllMenuItem = new JMenuItem("Select All");
-		JMenuItem timeDateAsMenuItem = new JMenuItem("Time/Date");
+		JMenuItem timeDateMenuItem = new JMenuItem("Time/Date");
 		
 		JMenuItem wordWrapMenuItem = new JMenuItem("Word Wrap");
 		JMenuItem fontMenuItem = new JMenuItem("Font...");
 		
 		JMenuItem statusBarMenuItem = new JMenuItem("Status Bar");
 		
-		JMenuItem viewHelpWrapMenuItem = new JMenuItem("View Help");
+		JMenuItem viewHelpMenuItem = new JMenuItem("View Help");
 		JMenuItem aboutNotepadMenuItem = new JMenuItem("About Notepad");
+		
+		// sub menu accelerators keys
+		newMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.CTRL_DOWN_MASK));
+		openMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, KeyEvent.CTRL_DOWN_MASK));
+		saveMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_DOWN_MASK));
+		printMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, KeyEvent.CTRL_DOWN_MASK));
+		
+		undoMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.CTRL_DOWN_MASK));
+		cutMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, KeyEvent.CTRL_DOWN_MASK));
+		copyMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_DOWN_MASK));
+		pasteMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, KeyEvent.CTRL_DOWN_MASK));
+		deleteMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, 0));
+		findMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F, KeyEvent.CTRL_DOWN_MASK));
+		findNextMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F3, 0));
+		replaceMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, KeyEvent.CTRL_DOWN_MASK));
+		goToMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_G, KeyEvent.CTRL_DOWN_MASK));
+		selectAllMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, KeyEvent.CTRL_DOWN_MASK));
+		timeDateMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F5, 0));
+		
+		// sub menu mnemonic keys
+		newMenuItem.setMnemonic(KeyEvent.VK_N);
+		openMenuItem.setMnemonic(KeyEvent.VK_O);
+		saveMenuItem.setMnemonic(KeyEvent.VK_S);
+		saveAsMenuItem.setMnemonic(KeyEvent.VK_A);
+		saveAsMenuItem.setDisplayedMnemonicIndex(5);
+		pageSetupMenuItem.setMnemonic(KeyEvent.VK_U);
+		printMenuItem.setMnemonic(KeyEvent.VK_P);
+		exitMenuItem.setMnemonic(KeyEvent.VK_X);
+		
+		undoMenuItem.setMnemonic(KeyEvent.VK_U);
+		cutMenuItem.setMnemonic(KeyEvent.VK_T);
+		copyMenuItem.setMnemonic(KeyEvent.VK_C);
+		pasteMenuItem.setMnemonic(KeyEvent.VK_P);
+		deleteMenuItem.setMnemonic(KeyEvent.VK_L);
+		findMenuItem.setMnemonic(KeyEvent.VK_F);
+		findNextMenuItem.setMnemonic(KeyEvent.VK_N);
+		findNextMenuItem.setDisplayedMnemonicIndex(5);
+		replaceMenuItem.setMnemonic(KeyEvent.VK_R);
+		goToMenuItem.setMnemonic(KeyEvent.VK_G);
+		selectAllMenuItem.setMnemonic(KeyEvent.VK_A);
+		timeDateMenuItem.setMnemonic(KeyEvent.VK_D);
+		
+		wordWrapMenuItem.setMnemonic(KeyEvent.VK_W);
+		fontMenuItem.setMnemonic(KeyEvent.VK_F);
+		
+		statusBarMenuItem.setMnemonic(KeyEvent.VK_S);
+		
+		viewHelpMenuItem.setMnemonic(KeyEvent.VK_H);
+		aboutNotepadMenuItem.setMnemonic(KeyEvent.VK_A);
 		
 		//add items to menus
 		fileMenu.add(newMenuItem);
@@ -71,7 +130,7 @@ public class Notepad {
 		editMenu.add(cutMenuItem);
 		editMenu.add(copyMenuItem);
 		editMenu.add(pasteMenuItem);
-		editMenu.add(deleteSetupMenuItem);
+		editMenu.add(deleteMenuItem);
 		editMenu.addSeparator();
 		editMenu.add(findMenuItem);
 		editMenu.add(findNextMenuItem);
@@ -79,14 +138,14 @@ public class Notepad {
 		editMenu.add(goToMenuItem);
 		editMenu.addSeparator();
 		editMenu.add(selectAllMenuItem);
-		editMenu.add(timeDateAsMenuItem);
+		editMenu.add(timeDateMenuItem);
 		
 		formatMenu.add(wordWrapMenuItem);
 		formatMenu.add(fontMenuItem);
 		
 		viewMenu.add(statusBarMenuItem);
 		
-		helpMenu.add(viewHelpWrapMenuItem);
+		helpMenu.add(viewHelpMenuItem);
 		helpMenu.addSeparator();
 		helpMenu.add(aboutNotepadMenuItem);
 		
