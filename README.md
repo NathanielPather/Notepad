@@ -7,10 +7,10 @@ A replication of the windows notepad program using java.
 
 <b>Replicated Notepad</b>
 <img src="https://i.gyazo.com/48efb1e588d840f9b2453ac2ab80241a.png">
-<img src="https://i.gyazo.com/363e8215dde0d7358236f43aa0df6306.png">
+<img src="https://i.gyazo.com/701c62f0ca056e8c614fd02a19ef74f9.png">
 
 <b>Current Functionality</b>
 <ul>
   <li>Visible scroll bars, unusable when the text area's columns and rows are not exceeding the window</li>
-  <li>Menus and submenus, only UI no functionality. Shortcuts not added.</li>
+  <li>Menus and submenus, only UI no functionality. Mnemonics and accelerators set.</li>
 </ul>
