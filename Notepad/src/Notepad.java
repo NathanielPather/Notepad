@@ -1,6 +1,10 @@
 import javax.swing.*;
-
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.Event;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
 import javax.swing.border.EmptyBorder;
@@ -41,6 +45,13 @@ public class Notepad {
 		JMenuItem openMenuItem = new JMenuItem("Open...");
 		JMenuItem saveMenuItem = new JMenuItem("Save");
 		JMenuItem saveAsMenuItem = new JMenuItem("Save As...");
+		
+		saveAsMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				System.out.println("test");
+			}
+		});
+		
 		JMenuItem pageSetupMenuItem = new JMenuItem("Page Setup...");
 		JMenuItem printMenuItem = new JMenuItem("Print...");
 		JMenuItem exitMenuItem = new JMenuItem("Exit");
@@ -158,8 +169,9 @@ public class Notepad {
 		JScrollPane scrollPane = new JScrollPane(textArea);
 		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		frame.add(scrollPane, BorderLayout.CENTER);
 		
+		frame.setResizable(true);
+		frame.add(scrollPane, BorderLayout.CENTER);
 		
 		frame.setVisible(true);
 	}
