@@ -1,13 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.awt.Event;
-
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-
-import javax.swing.border.EmptyBorder;
 
 
 public class Notepad {
@@ -45,13 +43,6 @@ public class Notepad {
 		JMenuItem openMenuItem = new JMenuItem("Open...");
 		JMenuItem saveMenuItem = new JMenuItem("Save");
 		JMenuItem saveAsMenuItem = new JMenuItem("Save As...");
-		
-		saveAsMenuItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent ev) {
-				System.out.println("test");
-			}
-		});
-		
 		JMenuItem pageSetupMenuItem = new JMenuItem("Page Setup...");
 		JMenuItem printMenuItem = new JMenuItem("Print...");
 		JMenuItem exitMenuItem = new JMenuItem("Exit");
@@ -165,6 +156,22 @@ public class Notepad {
 		
 		JTextArea textArea = new JTextArea();
 		frame.add(textArea);
+		
+		// actions
+		saveAsMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				FileWriter fw;
+				try {
+					fw = new FileWriter(new File("C:/Users/Lexhanatin/Desktop/wombat.txt"));
+					fw.write(textArea.getText());
+					System.out.print(textArea.getText());
+					fw.close();
+				}
+				catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		});
 		
 		JScrollPane scrollPane = new JScrollPane(textArea);
 		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
