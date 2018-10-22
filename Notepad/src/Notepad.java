@@ -170,6 +170,9 @@ public class Notepad {
 				catch (IOException e) {
 					e.printStackTrace();
 				}
+				// finalChooser
+				final JFileChooser fc = new JFileChooser();
+				fc.showSaveDialog(frame);
 			}
 		});
 		
