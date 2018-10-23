@@ -172,6 +172,7 @@ public class Notepad {
 				}
 				// finalChooser
 				final JFileChooser fc = new JFileChooser();
+				fc.setSelectedFile(new File("*.txt"));
 				fc.showSaveDialog(frame);
 			}
 		});
