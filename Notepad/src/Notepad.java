@@ -174,6 +174,9 @@ public class Notepad {
 				final JFileChooser fc = new JFileChooser();
 				fc.setSelectedFile(new File("*.txt"));
 				fc.showSaveDialog(frame);
+				
+				String fileName = fc.getSelectedFile().getName();
+				System.out.println(fileName);
 			}
 		});
 		
