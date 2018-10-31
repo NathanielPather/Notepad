@@ -160,23 +160,29 @@ public class Notepad {
 		// actions
 		saveAsMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
-				FileWriter fw;
-				try {
-					fw = new FileWriter(new File("C:/Users/Lexhanatin/Desktop/wombat.txt"));
-					fw.write(textArea.getText());
-					System.out.print(textArea.getText());
-					fw.close();
-				}
-				catch (IOException e) {
-					e.printStackTrace();
-				}
 				// finalChooser
 				final JFileChooser fc = new JFileChooser();
 				fc.setSelectedFile(new File("*.txt"));
-				fc.showSaveDialog(frame);
+				int userSelection = fc.showSaveDialog(frame);
 				
-				String fileName = fc.getSelectedFile().getName();
-				System.out.println(fileName);
+				if(userSelection == fc.APPROVE_OPTION) {
+					FileWriter fw;
+					try {
+						fw = new FileWriter(new File("C:/Users/Lexhanatin/Desktop/" + fc.getSelectedFile().getName()));
+						fw.write(textArea.getText());
+						System.out.print(textArea.getText());
+						fw.close();
+					}
+					catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+				else if (userSelection == fc.CANCEL_OPTION) {
+					System.out.println("Cancel selected!");
+				}
+				else if (userSelection == fc.ERROR_OPTION) {
+					System.out.println("Error detected!");
+				}
 			}
 		});
 		
