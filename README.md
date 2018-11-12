@@ -12,5 +12,6 @@ A replication of the windows notepad program using java.
 <b>Current Functionality</b>
 <ul>
   <li>Visible scroll bars, unusable when the text area's columns and rows are not exceeding the window</li>
-  <li>Menus and submenus, only UI no functionality. Mnemonics and accelerators set.</li>
+  <li>Menus and submenus. Mnemonics and accelerators set.</li>
+  <li>"Save as" file saving.</li>
 </ul>
