@@ -29,7 +29,13 @@ public class Gui {
 	replaceMenuItem, goToMenuItem, selectAllMenuItem, timeDateMenuItem, wordWrapMenuItem, fontMenuItem,
 	statusBarMenuItem, viewHelpMenuItem, aboutNotepadMenuItem;
 	
-	public void createMenu() {
+	public Gui() {
+		frame = new JFrame("Untitled - Notepad");
+		
+		// Bar
+		menuBar = new JMenuBar();
+		
+		
 		// menu
 		fileMenu = new JMenu("File");
 		editMenu = new JMenu("Edit");
@@ -50,13 +56,6 @@ public class Gui {
 		menuBar.add(formatMenu);
 		menuBar.add(viewMenu);
 		menuBar.add(helpMenu);
-	}
-	
-	public Gui() {
-		frame = new JFrame("Untitled - Notepad");
-		
-		// Bar
-		menuBar = new JMenuBar();
 		
 		//menu items
 		newMenuItem = new JMenuItem("New");
@@ -188,7 +187,7 @@ public class Gui {
 				if(userSelection == fc.APPROVE_OPTION) {
 					FileWriter fw;
 					try {
-						fw = new FileWriter(new File("C:/Users/Lexhanatin/Desktop/" + fc.getSelectedFile().getName()));
+						fw = new FileWriter(new File(fc.getCurrentDirectory() + "/" + fc.getSelectedFile().getName()));
 						fw.write(textArea.getText());
 						System.out.print(textArea.getText());
 						fw.close();
