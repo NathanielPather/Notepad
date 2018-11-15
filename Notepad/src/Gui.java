@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.FileReader;
+import java.nio.file.Files;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -184,18 +185,11 @@ public class Gui {
 				int userSelection = fc.showOpenDialog(frame);
 				
 				if(userSelection == fc.APPROVE_OPTION) {
-					FileReader fr;
 					try {
-						fr = new FileReader(new File(fc.getCurrentDirectory() + "/" + fc.getSelectedFile().getName()));
-						char [] a = new char[50];
-						String fileContents = "";
-						
-						fr.read(a);
-						for (char c : a)
-							fileContents += c;
-						fr.close();
-						textArea.setText(fileContents);
-					}
+						File file = new File ("C:/Users/Lexhanatin/Desktop/test.txt");
+						String contents = new String(Files.readAllBytes(file.toPath()));
+						textArea.setText(contents);
+					}	
 					catch (IOException e) {
 						e.printStackTrace();
 					}
