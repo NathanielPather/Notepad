@@ -16,6 +16,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.KeyStroke;
+import javax.swing.JOptionPane;
 
 
 public class Gui {
@@ -179,6 +180,33 @@ public class Gui {
 		frame.add(textArea);
 		
 		// actions
+		
+		// INCOMPLETE
+		newMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				if (textArea.getText().trim().length() != 0) {
+					System.out.println("Contains Text");
+					//JOptionPane.showConfirmDialog(frame, "Do you want to save changes to Untitled?");
+					
+					Object[] options = { "Save", "Don't Save", "Cancel" };
+					
+					JOptionPane.showOptionDialog(
+							frame,
+							"Do you want to save changes to Untitled?",
+							"Notepad",
+							JOptionPane.DEFAULT_OPTION,
+							JOptionPane.INFORMATION_MESSAGE,
+							null,
+							options,
+							options[0]
+					);
+				}
+				else {
+					System.out.println("Is Empty");
+				}
+			}
+		});
+		
 		openMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				final JFileChooser fc = new JFileChooser();
@@ -194,6 +222,12 @@ public class Gui {
 						e.printStackTrace();
 					}
 				}
+				
+			}
+		});
+		
+		saveMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
 				
 			}
 		});
