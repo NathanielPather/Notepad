@@ -5,6 +5,7 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.FileReader;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -177,6 +178,33 @@ public class Gui {
 		frame.add(textArea);
 		
 		// actions
+		openMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ev) {
+				final JFileChooser fc = new JFileChooser();
+				int userSelection = fc.showOpenDialog(frame);
+				
+				if(userSelection == fc.APPROVE_OPTION) {
+					FileReader fr;
+					try {
+						fr = new FileReader(new File(fc.getCurrentDirectory() + "/" + fc.getSelectedFile().getName()));
+						char [] a = new char[50];
+						String fileContents = "";
+						
+						fr.read(a);
+						for (char c : a)
+							fileContents += c;
+						fr.close();
+						textArea.setText(fileContents);
+					}
+					catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+				
+			}
+		});
+		
+		
 		saveAsMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				// finalChooser
