@@ -14,4 +14,5 @@ A replication of the windows notepad program using java.
   <li>Visible scroll bars, unusable when the text area's columns and rows are not exceeding the window</li>
   <li>Menus and submenus. Mnemonics and accelerators set.</li>
   <li>"Save as" file saving.</li>
+  <li>"Open" file reading.</li>
 </ul>
