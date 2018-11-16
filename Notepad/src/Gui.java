@@ -31,6 +31,8 @@ public class Gui {
 	exitMenuItem, undoMenuItem, cutMenuItem, copyMenuItem, pasteMenuItem, deleteMenuItem, findMenuItem, findNextMenuItem,
 	replaceMenuItem, goToMenuItem, selectAllMenuItem, timeDateMenuItem, wordWrapMenuItem, fontMenuItem,
 	statusBarMenuItem, viewHelpMenuItem, aboutNotepadMenuItem;
+	//Text area
+	public final JTextArea textArea;
 	
 	public Gui() {
 		frame = new JFrame("Untitled - Notepad");
@@ -176,12 +178,10 @@ public class Gui {
 		// sets it
 		frame.setJMenuBar(menuBar);
 		
-		JTextArea textArea = new JTextArea();
+		textArea = new JTextArea();
 		frame.add(textArea);
 		
 		// actions
-		
-		// INCOMPLETE
 		newMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
 				if (textArea.getText().trim().length() != 0) {
@@ -201,13 +201,21 @@ public class Gui {
 							options[0]
 					);
 					
-					if (x == 0) {
-						// Save action should be called here
-						System.out.println("Save");
+					if (x != 2) {
+						if (x == 0) {
+							// Save action should be called here
+							System.out.println("Save");
+							saveAsAction();
+						}
+						else if (x == 1) {
+							System.out.println("Don't Save");
+						}
+						textArea.setText(null);
 					}
-					else if (x == 1) {
-						System.out.println("Don't Save");
+					else {
+						System.out.println("Cancel Selected");
 					}
+					
 				}
 				else {
 					System.out.println("Is Empty");
@@ -222,7 +230,7 @@ public class Gui {
 				
 				if(userSelection == fc.APPROVE_OPTION) {
 					try {
-						File file = new File ("C:/Users/Lexhanatin/Desktop/test.txt");
+						File file = new File (fc.getCurrentDirectory() + "/" + fc.getSelectedFile().getName());
 						String contents = new String(Files.readAllBytes(file.toPath()));
 						textArea.setText(contents);
 					}	
@@ -230,7 +238,6 @@ public class Gui {
 						e.printStackTrace();
 					}
 				}
-				
 			}
 		});
 		
@@ -243,29 +250,7 @@ public class Gui {
 		
 		saveAsMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
-				// finalChooser
-				final JFileChooser fc = new JFileChooser();
-				fc.setSelectedFile(new File("*.txt"));
-				int userSelection = fc.showSaveDialog(frame);
-				
-				if(userSelection == fc.APPROVE_OPTION) {
-					FileWriter fw;
-					try {
-						fw = new FileWriter(new File(fc.getCurrentDirectory() + "/" + fc.getSelectedFile().getName()));
-						fw.write(textArea.getText());
-						System.out.print(textArea.getText());
-						fw.close();
-					}
-					catch (IOException e) {
-						e.printStackTrace();
-					}
-				}
-				else if (userSelection == fc.CANCEL_OPTION) {
-					System.out.println("Cancel selected!");
-				}
-				else if (userSelection == fc.ERROR_OPTION) {
-					System.out.println("Error detected!");
-				}
+				saveAsAction();
 			}
 		});
 		
@@ -281,5 +266,31 @@ public class Gui {
 		frame.setResizable(true);
 		frame.setVisible(true);
 		
+	}
+	
+	public void saveAsAction() {
+		// finalChooser
+		final JFileChooser fc = new JFileChooser();
+		fc.setSelectedFile(new File("*.txt"));
+		int userSelection = fc.showSaveDialog(frame);
+		
+		if(userSelection == fc.APPROVE_OPTION) {
+			FileWriter fw;
+			try {
+				fw = new FileWriter(new File(fc.getCurrentDirectory() + "/" + fc.getSelectedFile().getName()));
+				fw.write(textArea.getText());
+				System.out.print(textArea.getText());
+				fw.close();
+			}
+			catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		else if (userSelection == fc.CANCEL_OPTION) {
+			System.out.println("Cancel selected!");
+		}
+		else if (userSelection == fc.ERROR_OPTION) {
+			System.out.println("Error detected!");
+		}
 	}
 }
