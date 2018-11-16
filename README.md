@@ -15,4 +15,5 @@ A replication of the windows notepad program using java.
   <li>Menus and submenus. Mnemonics and accelerators set.</li>
   <li>"Save as" file saving.</li>
   <li>"Open" file reading.</li>
+  <li>"New" textfield reset and save prompt.</li>
 </ul>
