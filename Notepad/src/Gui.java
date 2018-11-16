@@ -190,7 +190,7 @@ public class Gui {
 					
 					Object[] options = { "Save", "Don't Save", "Cancel" };
 					
-					JOptionPane.showOptionDialog(
+					int x = JOptionPane.showOptionDialog(
 							frame,
 							"Do you want to save changes to Untitled?",
 							"Notepad",
@@ -200,6 +200,14 @@ public class Gui {
 							options,
 							options[0]
 					);
+					
+					if (x == 0) {
+						// Save action should be called here
+						System.out.println("Save");
+					}
+					else if (x == 1) {
+						System.out.println("Don't Save");
+					}
 				}
 				else {
 					System.out.println("Is Empty");
