@@ -34,8 +34,11 @@ public class Gui {
 	//Text area
 	public final JTextArea textArea;
 	
+	public String fileName;
+	
 	public Gui() {
-		frame = new JFrame("Untitled - Notepad");
+		fileName = "Untitled";
+		frame = new JFrame(fileName + " - Notepad");
 		
 		// Bar
 		menuBar = new JMenuBar();
@@ -211,6 +214,8 @@ public class Gui {
 							System.out.println("Don't Save");
 						}
 						textArea.setText(null);
+						fileName = "Untitled";
+						frame.setTitle(fileName + " - Notepad");
 					}
 					else {
 						System.out.println("Cancel Selected");
@@ -281,6 +286,9 @@ public class Gui {
 				fw.write(textArea.getText());
 				System.out.print(textArea.getText());
 				fw.close();
+				
+				fileName = fc.getSelectedFile().getName();
+				frame.setTitle(fileName + " - Notepad");
 			}
 			catch (IOException e) {
 				e.printStackTrace();
