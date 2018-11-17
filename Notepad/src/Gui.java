@@ -35,6 +35,7 @@ public class Gui {
 	public final JTextArea textArea;
 	
 	public String fileName;
+	public File directory;
 	
 	public Gui() {
 		fileName = "Untitled";
@@ -238,6 +239,10 @@ public class Gui {
 						File file = new File (fc.getCurrentDirectory() + "/" + fc.getSelectedFile().getName());
 						String contents = new String(Files.readAllBytes(file.toPath()));
 						textArea.setText(contents);
+						
+						fileName = fc.getSelectedFile().getName();
+						directory = fc.getCurrentDirectory();
+						frame.setTitle(fileName + " - Notepad");
 					}	
 					catch (IOException e) {
 						e.printStackTrace();
@@ -248,7 +253,22 @@ public class Gui {
 		
 		saveMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ev) {
-				
+				System.out.println("Directory is: " + directory);
+				if (directory != null) {
+					FileWriter fw;
+					try {
+						fw = new FileWriter(new File(directory + "/" + fileName));
+						fw.write(textArea.getText());
+						System.out.println("Saved");
+						fw.close();
+					}
+					catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+				else {
+					saveAsAction();
+				}
 			}
 		});
 		
@@ -288,6 +308,7 @@ public class Gui {
 				fw.close();
 				
 				fileName = fc.getSelectedFile().getName();
+				directory = fc.getCurrentDirectory();
 				frame.setTitle(fileName + " - Notepad");
 			}
 			catch (IOException e) {
