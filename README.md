@@ -16,4 +16,5 @@ A replication of the windows notepad program using java.
   <li>"Save as" file saving.</li>
   <li>"Open" file reading.</li>
   <li>"New" textfield reset and save prompt.</li>
+  <li>Dynamically changing frame title to match current filename.</li>
 </ul>
